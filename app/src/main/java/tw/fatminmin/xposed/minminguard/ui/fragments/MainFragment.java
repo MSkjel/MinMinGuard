@@ -3,6 +3,7 @@ package tw.fatminmin.xposed.minminguard.ui.fragments;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,7 @@ public class MainFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setHasOptionsMenu(true);
     }
 
@@ -84,10 +86,10 @@ public class MainFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        TextView mTxtXposedEnabled = (TextView) view.findViewById(R.id.txt_xposed_enable);
-        mBtnMode = (Button) view.findViewById(R.id.btn_mode);
+        TextView mTxtXposedEnabled = view.findViewById(R.id.txt_xposed_enable);
+        mBtnMode = view.findViewById(R.id.btn_mode);
 
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view);
 
         if (!Util.xposedEnabled())
         {
